@@ -1,4 +1,4 @@
-module github.com/jutionck/gold-market
+module github.com/jutionck/course-golang-postgre
 
 go 1.14
 
