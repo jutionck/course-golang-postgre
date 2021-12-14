@@ -2,16 +2,12 @@ package main
 
 import (
 	"log"
+
+	"github.com/jmoiron/sqlx"
 )
 
-func CreateCustomers(customers Customers) {
-	db, err := InitDB()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer db.Close()
-	_, err = db.NamedExec(INSERT_CUSTOMERS, customers)
+func CreateCustomers(db *sqlx.DB, customers Customers) {
+	_, err := db.NamedExec(INSERT_CUSTOMERS, customers)
 
 	if err != nil {
 		log.Fatal(err)
@@ -20,14 +16,8 @@ func CreateCustomers(customers Customers) {
 	}
 }
 
-func UpdateCustomer(customer Customers) {
-	db, err := InitDB()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer db.Close()
-	_, err = db.NamedExec(UPDATE_CUSTOMER, customer)
+func UpdateCustomer(db *sqlx.DB, customer Customers) {
+	_, err := db.NamedExec(UPDATE_CUSTOMER, customer)
 
 	if err != nil {
 		log.Fatal(err)
@@ -36,18 +26,6 @@ func UpdateCustomer(customer Customers) {
 	}
 }
 
-func DeletCustomer(id int) {
-	db, err := InitDB()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer db.Close()
+func DeletCustomer(db *sqlx.DB, id int) {
 	db.MustExec(DELETE_CUSTOMER, id)
-
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		log.Println("Successfully delete data to database!")
-	}
 }

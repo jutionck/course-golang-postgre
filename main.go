@@ -10,27 +10,32 @@ package main
 
 func main() {
 
+	// db, err := InitDB()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
 	// layoutFormat := "2006-01-02"
 	// birthDate := "1999-02-22"
 	// myDate, _ := DateParsing(layoutFormat, birthDate)
 
-	// Insert
+	// // Insert
 	// customers := Customers{
-	// 	Id:         1,
-	// 	FirstName:  "Maria",
-	// 	LastName:   "Kirana",
+	// 	Id:         4,
+	// 	FirstName:  "Suci",
+	// 	LastName:   "Pardede",
 	// 	BirthDate:  myDate,
 	// 	Address:    "Jakarta Barat",
 	// 	Status:     1,
 	// 	Email:      "contoh@gmail.com",
-	// 	UserName:   "jution.kirana",
+	// 	UserName:   "suci.pardede",
 	// 	Password:   "password",
 	// 	DomisiliID: 1,
 	// 	CreatedAt:  time.Now(),
 	// 	UpdatedAt:  time.Now(),
 	// }
 
-	// CreateCustomers(customers)
+	// CreateCustomers(db, customers)
 
 	// Update
 	// customerUpdate := Customers{
