@@ -73,7 +73,7 @@ func main() {
 	// FindCustomerByDomicile(db, "%Bandung%")
 
 	// Get customer by id with prepare
-	GetCustomerByIDWithPrepare(db, 2)
+	// GetCustomerByIDWithPrepare(db, 2)
 
 	/*
 		Tugas :
@@ -83,4 +83,6 @@ func main() {
 		4. Tampilkan jumlah customer berdasarkan domisili
 		5. Tampilkan rata-rata umur customer berdasarkan domisili
 	*/
+
+	CustomersTransferSimulation(db)
 }

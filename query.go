@@ -18,4 +18,8 @@ const (
 	ON mst_customer.domisili_id = mst_domisili.id
 	WHERE mst_customer.id = :id
 	ORDER BY mst_customer.id`
+
+	UPDATE_SALDO_CUSTOMER_PLUS = `UPDATE mst_customer SET money = (money + :money ) WHERE id = :id`
+
+	UPDATE_SALDO_CUSTOMER_MINUS = `UPDATE mst_customer SET money = (money - :money ) WHERE id = :id`
 )

@@ -31,3 +31,8 @@ type CustomerDomicile struct {
 	LastName     string `db:"last_name"`
 	DomicileName string `db:"domisili"`
 }
+
+type CustomerTransfer struct {
+	Id    int `db:"id"`
+	Money int `db:"money"`
+}

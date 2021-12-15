@@ -132,3 +132,33 @@ func GetCustomerByIDWithPrepare(db *sqlx.DB, id int) {
 
 	log.Println(customer)
 }
+
+// Transactional
+func CustomersTransferSimulation(db *sqlx.DB) {
+	tx := db.MustBegin()
+	// Update saldo PENGIRIM (id nya ada | id => 1-5)
+	moneyOne := CustomerTransfer{
+		Id:    9,
+		Money: 1000000,
+	}
+	// Update saldo PENERIMA (id nya tidak ada | id => ! 1-5 )
+	moneyTwo := CustomerTransfer{
+		Id:    8,
+		Money: 1000000,
+	}
+	// PENGIRIM
+	result, _ := tx.NamedExec(UPDATE_SALDO_CUSTOMER_MINUS, moneyOne)
+	r, _ := result.RowsAffected()
+	if r == 0 {
+		tx.Rollback()
+		return
+	}
+	// PENERIMA
+	result2, _ := tx.NamedExec(UPDATE_SALDO_CUSTOMER_PLUS, moneyTwo)
+	r2, _ := result2.RowsAffected()
+	if r2 == 0 {
+		tx.Rollback()
+		return
+	}
+	tx.Commit()
+}
